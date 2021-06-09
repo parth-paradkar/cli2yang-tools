@@ -288,7 +288,7 @@ class YangCLIClient(object):
         ssh_cmd = "sshpass -p "+self.password+" ssh -o StrictHostKeyChecking=no -p "+self.xr_lnx_ssh_port+ " " +self.username+"@"+self.host+" \"sudo /bin/bash -c \'source /pkg/bin/ztp_helper.sh &&  xrcmd \\\""+show_cmd+"\\\" 2>/dev/null\'\""
 
         if self.debug:
-          print ssh_cmd
+          print(ssh_cmd)
 
         show_output = self.run_bash(cmd=ssh_cmd)
 
@@ -315,7 +315,7 @@ class YangCLIClient(object):
         transfer_file_cmd = "sshpass -p "+self.password+" scp -P "+self.xr_lnx_ssh_port+ " -o StrictHostKeyChecking=no  "+config_file+" "+self.username+"@"+self.host+":/misc/app_host/scratch/"+filename
 
         if self.debug:
-           print transfer_file_cmd
+           print(transfer_file_cmd)
 
         transfer_file = self.run_bash(transfer_file_cmd)
 
@@ -327,7 +327,7 @@ class YangCLIClient(object):
         ssh_cmd = "sshpass -p "+self.password+" ssh -o StrictHostKeyChecking=no -p "+self.xr_lnx_ssh_port+ " " +self.username+"@"+self.host+" \"sudo /bin/bash -c \'source /pkg/bin/ztp_helper.sh &&  xrapply /misc/app_host/scratch/"+filename+"\'\""
 
         if self.debug:
-          print ssh_cmd
+          print(ssh_cmd)
 
         xrapply_output = self.run_bash(cmd=ssh_cmd)
         
@@ -357,7 +357,7 @@ class YangCLIClient(object):
         transfer_file_cmd = "sshpass -p "+self.password+" scp -P "+self.xr_lnx_ssh_port+ " -o StrictHostKeyChecking=no "+config_file+" "+self.username+"@"+self.host+":/misc/app_host/scratch/"+filename
 
         if self.debug:
-          print transfer_file_cmd
+          print(transfer_file_cmd)
 
         transfer_file = self.run_bash(transfer_file_cmd)
 
@@ -369,7 +369,7 @@ class YangCLIClient(object):
         ssh_cmd = "sshpass -p "+self.password+" ssh -o StrictHostKeyChecking=no -p "+self.xr_lnx_ssh_port+ " " +self.username+"@"+self.host+" \"sudo /bin/bash -c \'source /pkg/bin/ztp_helper.sh &&  xrreplace /misc/app_host/scratch/"+filename+" \'\""
 
         if self.debug:
-          print ssh_cmd 
+          print(ssh_cmd)
            
         xrreplace_output = self.run_bash(cmd=ssh_cmd)
 
@@ -400,7 +400,7 @@ class YangCLIClient(object):
            # s = set(candidate.keys())
            # self.grpc_diff = [x for x in  base.keys() if x not in s]
            #self.grpc_diff
-           print " gRPC not supported in this version of code, Skipping.."
+           print(" gRPC not supported in this version of code, Skipping..")
         elif (protocol == "netconf"):
            base = self.nc_dict_base
            candidate = self.nc_dict
